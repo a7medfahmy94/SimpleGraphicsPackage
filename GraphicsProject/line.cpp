@@ -9,6 +9,10 @@ Line::~Line()
 {
 
 }
+int Line:: round(double d){
+  return d + 0.5;
+}
+
 
 void Line::draw_integer_dda(QPainter& p,QPoint& begin,QPoint& end){
     int xb = begin.x();
@@ -43,29 +47,42 @@ void Line::draw_cartesian(QPainter& p,QPoint& begin,QPoint& end){
     int xe = end.x();
     int yb = begin.y();
     int ye = end.y();
+    int dx=xe-xb;
+    int dy=ye-yb;
+    int x=xb;
+    int y=yb;
     double m;
-    if(xb != xe)
-        m = double(yb-ye)/(xb-xe);
+     p.drawPoint(QPoint(x,y));
+
+    if(xb > xe)
+        std::swap(xb,xe);std::swap(yb,ye);
+
+    if(dx != 0)
+        m = double(dy)/dx;
     else
         m = 1;
-    if(m < 1){//go along the x-axis
-        if(xb > xe){std::swap(xb,xe);std::swap(yb,ye);}
 
-        for(int x = xb; x <= xe; x++){
-            int y = m*(x-xb) + yb;
-            p.drawPoint(QPoint(x,y));
+    double c=yb-(m*xb);
+    double d=xb-((1/m)*yb);
+
+    if(abs(dx)>=abs(dy)){
+        while(x < xe){
+            x=x+1;
+            y=(m*x)+c;
+            p.drawPoint(QPoint(x,round(y)));
+
         }
+    }else{
+        while(y < ye){
+            y=y+1;
+            x=(1/m)*y+d;
+            p.drawPoint(QPoint(round(x),y));
 
-    }else{//go along the y-axis
-        std::cout << "Y\n";
-        if(yb > ye){std::swap(xb,xe);std::swap(yb,ye);}
-
-        for(int y = yb; y <= ye; y++){
-            int x = (y - yb)/m+xb;
-            p.drawPoint(QPoint(x,y));
         }
-
     }
+
+
+
 }
 
 void Line::draw_parametric(QPainter &p, QPoint &begin, QPoint &end){

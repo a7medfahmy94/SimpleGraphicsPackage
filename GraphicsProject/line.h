@@ -20,6 +20,7 @@ public:
     static void draw_cartesian(QPainter& p,QPoint& begin,QPoint& end);
     static void draw_parametric(QPainter& p,QPoint& begin,QPoint& end);
     static void draw_integer_dda(QPainter& p,QPoint& begin,QPoint& end);
+    static int round(double d);
 };
 
 #endif // LINE_H
