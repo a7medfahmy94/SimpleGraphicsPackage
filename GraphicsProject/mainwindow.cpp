@@ -6,18 +6,19 @@
 #include <QPaintEvent>
 #include <bits/stdc++.h>
 #include "line.h"
+#include "linecartesian.h"
+#include "linedda.h"
+#include "lineparametric.h"
 
 MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
     ui(new Ui::MainWindow)
 {
-    start_point = {-1 , -1};
-    end_point = {-1 , -1};
-    current_shape = 0;
-    memset(pixels , -1 , sizeof pixels);
-    load = false;
+    WIDTH = 400 , HEIGHT = 300;
+    shape_controller = new ShapeController(WIDTH, HEIGHT);
     ui->setupUi(this);
-
+    shape_controller->setClear();
+    update();
 }
 
 
@@ -26,46 +27,36 @@ MainWindow::~MainWindow()
     delete ui;
 }
 
-bool MainWindow::is_set(QPoint& p){
-    return ! (p.x() == -1 && p.y() == -1);
-}
+
 
 void MainWindow::on_actionCartesian_triggered()
 {
-
+    shape_controller->changeShape(new Line());
+    shape_controller->changeDrawAlgo(new LineCartesian());
     update();
-    ui->current_selected->setText("Line : Cartesian");
-
-    current_shape = 0;
 }
 
 void MainWindow::on_actionParametric_triggered()
 {
+    shape_controller->changeShape(new Line());
+    shape_controller->changeDrawAlgo(new LineParametric());
     update();
-    ui->current_selected->setText("Line : Parametric");
-    current_shape = 1;
 }
 
 void MainWindow::on_actionInteger_DDA_triggered()
 {
+    shape_controller->changeShape(new Line());
+    shape_controller->changeDrawAlgo(new LineDDA());
     update();
-    ui->current_selected->setText("Line : Integer DDA");
-    current_shape = 2;
 }
 
 
 
 void MainWindow::mousePressEvent(QMouseEvent *f) {
 
-    if(is_set(start_point) && is_set(end_point)){
-        start_point = f->pos();
-        end_point = {-1 , -1};
-    }else if(is_set(start_point)){
-        end_point = f->pos();
-    }else{
-        start_point = f->pos();
-    }
-    update();
+   shape_controller->receivePoint(f->pos());
+   update();
+
 }
 
 void MainWindow::paintEvent(QPaintEvent *e) {
@@ -76,53 +67,32 @@ void MainWindow::paintEvent(QPaintEvent *e) {
     linepen.setWidth(4);
     painter.setRenderHint(QPainter::Antialiasing, true);
     painter.setPen(linepen);
-    if(load){
-        redraw(painter);
-        load = false;
-        return;
-    }
-    if(is_set(start_point) && is_set(end_point)){
-        switch(current_shape){
-        case 0:
-            Line::draw_cartesian(painter,start_point,end_point,pixels,400,300);
-            break;
-        case 1:
-            Line::draw_parametric(painter,start_point,end_point,pixels,400,300);
-            break;
-        case 2:
-            Line::draw_integer_dda(painter,start_point,end_point,pixels,400,300);
-            break;
-        }
 
-    }else{
-        painter.drawPoint(start_point);
-        pixels[start_point.x()][start_point.y()] = painter.pen().color().value();
-    }
-
+    shape_controller->draw(painter);
 }
 
 void MainWindow::redraw(QPainter& painter){
-    for(int i = 0 ; i < 400 ; ++i){
-        for(int j = 0 ; j < 300; ++j){
-            if(pixels[i][j] != -1){
-                painter.drawPoint(QPoint(i,j));
-            }
+    for(int i = 0 ; i < WIDTH ; ++i){
+        for(int j = 0 ; j < HEIGHT; ++j){
+//            if(file.get(i,j) != -1){
+//                painter.drawPoint(QPoint(i,j));
+//            }
         }
     }
 
 }
 
-void MainWindow::on_pushButton_clicked()
+
+
+void MainWindow::on_loadButton_clicked()
 {
-    std::ofstream file("img.dat",std::ios::binary);
-    file.write((char*)pixels,sizeof pixels);
-    file.close();
+//    file.load();
+//    load = true;
+    update();
+
 }
 
-void MainWindow::on_pushButton_2_clicked()
+void MainWindow::on_saveButton_clicked()
 {
-    std::ifstream file("img.dat",std::ios::binary);
-    file.read((char*)pixels,sizeof pixels);
-    load = true;
-    update();
+    shape_controller->save();
 }

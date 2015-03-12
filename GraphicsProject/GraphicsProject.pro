@@ -14,9 +14,24 @@ TEMPLATE = app
 
 SOURCES += main.cpp\
         mainwindow.cpp \
-    line.cpp
+    line.cpp \
+    file.cpp \
+    shape.cpp \
+    helper.cpp \
+    linecartesian.cpp \
+    lineparametric.cpp \
+    linedda.cpp \
+    shapecontroller.cpp
 
 HEADERS  += mainwindow.h \
-    line.h
+    line.h \
+    file.h \
+    shape.h \
+    helper.h \
+    drawalgo.h \
+    linecartesian.h \
+    lineparametric.h \
+    linedda.h \
+    shapecontroller.h
 
 FORMS    += mainwindow.ui

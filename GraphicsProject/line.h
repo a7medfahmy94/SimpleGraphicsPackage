@@ -11,16 +11,24 @@
 #include <QMouseEvent>
 #include <QPaintEvent>
 #include <bits/stdc++.h>
+#include "drawalgo.h"
+#include "file.h"
+#include "shape.h"
 
-class Line
-{
+class Line:public Shape{
 public:
     Line();
+    Line(QPoint,QPoint);
     ~Line();
-    static void draw_cartesian(QPainter& p,QPoint& begin,QPoint& end,int[][300],int,int);
-    static void draw_parametric(QPainter& p,QPoint& begin,QPoint& end,int[][300],int,int);
-    static void draw_integer_dda(QPainter& p,QPoint& begin,QPoint& end,int[][300],int,int);
-    static int round(double d);
+    void draw(QPainter&);
+    void setDrawAlgo(DrawAlgo*);
+    void receivePoint(QPoint);
+
+
+private:
+    DrawAlgo* drawAlgo;
 };
+
+
 
 #endif // LINE_H
