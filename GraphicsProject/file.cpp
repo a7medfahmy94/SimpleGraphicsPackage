@@ -3,12 +3,12 @@
 
 File::File(int w,int h)
 {
-    HEIGHT = h;
-    WIDTH = w;
-    grid = new int*[h];
-    for(int i = 0 ; i < h; i++){
-        grid[i] = new int[w];
-        for(int j = 0 ; j < w; ++j){
+    HEIGHT = w;//this is not wrong ,,, it's working
+    WIDTH = h;
+    grid = new int*[HEIGHT];
+    for(int i = 0 ; i < HEIGHT; i++){
+        grid[i] = new int[WIDTH];
+        for(int j = 0 ; j < WIDTH; ++j){
             grid[i][j] = 0;
         }
     }
@@ -35,13 +35,17 @@ void File::draw(int x,int y){
 
 void File::save(){
     std::ofstream file(fileName.c_str(),std::ios::binary);
-    file.write((char*)grid,sizeof grid);
+    for(int i = 0 ; i < HEIGHT; i++){
+        file.write((char*)grid[i],WIDTH*4);
+    }
     file.close();
 }
 
 void File::load(){
     std::ifstream in(fileName.c_str(),std::ios::binary);
-    in.read((char*)&grid,sizeof grid);
+    for(int i = 0 ; i < HEIGHT; i++){
+        in.read((char*)grid[i],WIDTH*4);
+    }
 }
 
 

@@ -13,12 +13,14 @@
 
 ShapeController::ShapeController(){clear =false;}
 
-ShapeController::ShapeController(int w,int h)
+ShapeController::ShapeController(int w,int h,QImage* im)
 {
-    file = File(w,h);
+    file = new File(w,h);
     shape = new Line();
     shape->setDrawAlgo(new LineCartesian());
     clear = false;
+    file_load = false;
+    img = im;
 }
 
 ShapeController::~ShapeController()
@@ -40,28 +42,50 @@ void ShapeController::changeShape(Shape * p){
 
 void ShapeController::draw(QPainter & p){
     if(clear){
-        QPen linepen(Qt::white);
-        linepen.setCapStyle(Qt::RoundCap);
-        linepen.setWidth(4);
-        p.setPen(linepen);
-        for(int i = 0 ; i < file.getH(); i++){
-            for(int j = 0 ; j < file.getW(); j++){
-                p.drawPoint(QPoint(i,j));
+//        QPen linepen(Qt::white);
+//        linepen.setCapStyle(Qt::RoundCap);
+//        linepen.setWidth(4);
+//        p.setPen(linepen);
+//        for(int i = 0 ; i < file.getH(); i++){
+//            for(int j = 0 ; j < file.getW(); j++){
+//                p.drawPoint(QPoint(i,j));
+//            }
+//        }
+        img->fill(Qt::white);
+        clear = false;
+    }else if(file_load){
+        for(int i = 0 ; i < file->getH(); i++){
+            for(int j = 0 ; j < file->getW(); j++){
+                if(file->get(i,j) != 0){
+                 p.drawPoint(i,j);
+                }
             }
         }
-        clear = false;
+        file_load = false;
     }else{
         shape->draw(p);
     }
 }
 
 int ShapeController::get(int a, int b){
-    return file.get(a,b);
+    return file->get(a,b);
 }
 
 
 void ShapeController::save(){
-    file.save();
+    for(int i = 0 ; i < img->width(); i++){
+        for(int j = 0 ; j < img->height(); j++){
+            if(img->pixel(i,j) != qRgb(255,255,255)){
+                file->set(i,j);
+            }
+        }
+    }
+    file->save();
+}
+
+void ShapeController::load(){
+    file->load();
+    file_load = true;
 }
 
 void ShapeController::receivePoint(QPoint p){

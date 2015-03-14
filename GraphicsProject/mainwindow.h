@@ -23,7 +23,7 @@ public:
 public :
     int WIDTH , HEIGHT;
     ShapeController *shape_controller;
-
+    QImage* img;
 private slots:
 
     void on_circleCartesian_triggered();
@@ -39,6 +39,10 @@ private slots:
     void on_lineParametric_triggered();
 
     void on_lineInteger_DDA_triggered();
+
+    void on_save_triggered();
+
+    void on_load_triggered();
 
 private:
     Ui::MainWindow *ui;

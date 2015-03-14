@@ -20,7 +20,10 @@ MainWindow::MainWindow(QWidget *parent) :
     ui(new Ui::MainWindow)
 {
     WIDTH = 400 , HEIGHT = 700;
-    shape_controller = new ShapeController(WIDTH, HEIGHT);
+    img = new QImage(HEIGHT, WIDTH , QImage::Format_ARGB32);
+    img->fill(Qt::white);
+
+    shape_controller = new ShapeController(HEIGHT, WIDTH,img);
     ui->setupUi(this);
     shape_controller->setClear();
     update();
@@ -41,15 +44,29 @@ void MainWindow::mousePressEvent(QMouseEvent *f) {
 }
 
 void MainWindow::paintEvent(QPaintEvent *e) {
+//painter to paint on screen
     setAttribute(Qt::WA_OpaquePaintEvent);
     QPainter painter(this);
     QPen linepen(Qt::black);
     linepen.setCapStyle(Qt::RoundCap);
-    linepen.setWidth(4);
+    linepen.setWidth(1);
     painter.setRenderHint(QPainter::Antialiasing, true);
     painter.setPen(linepen);
 
-    shape_controller->draw(painter);
+//painter to paint on QImage
+    QPainter pimg (img);
+    QPen plinepen(Qt::black);
+    plinepen.setCapStyle(Qt::RoundCap);
+    plinepen.setWidth(1);
+    pimg.setRenderHint(QPainter::Antialiasing, true);
+    pimg.setPen(plinepen);
+
+    //draw on image
+    shape_controller->draw(pimg);
+    //draw image on screen
+    painter.drawImage(0,0,*img);
+
+
 }
 
 
@@ -100,5 +117,16 @@ void MainWindow::on_lineInteger_DDA_triggered()
 {
     shape_controller->changeShape(new Line());
     shape_controller->changeDrawAlgo(new LineDDA());
+    update();
+}
+
+void MainWindow::on_save_triggered()
+{
+    shape_controller->save();
+}
+
+void MainWindow::on_load_triggered()
+{
+    shape_controller->load();
     update();
 }

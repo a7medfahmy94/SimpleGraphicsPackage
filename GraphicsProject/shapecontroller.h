@@ -3,12 +3,13 @@
 
 #include "file.h"
 #include "shape.h"
+#include <QImage>
 
 class ShapeController
 {
 public:
     ShapeController();
-    ShapeController(int,int);
+    ShapeController(int,int,QImage*);
     ~ShapeController();
 
     void changeShape(Shape*);
@@ -20,9 +21,11 @@ public:
     void changeDrawAlgo(DrawAlgo*);
     void setClear();
 private:
-    File file;
+    File* file;
     Shape* shape;
     bool clear;
+    bool file_load;
+    QImage* img;
 };
 
 #endif // SHAPECONTROLLER_H
