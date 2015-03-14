@@ -35,6 +35,10 @@ private slots:
 
     void on_actionCartesian_2_triggered();
 
+    void on_actionInteger_DDA_2_triggered();
+
+    void on_actionPolar_triggered();
+
 private:
     Ui::MainWindow *ui;
 

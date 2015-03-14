@@ -11,6 +11,8 @@
 #include "lineparametric.h"
 #include "circle.h"
 #include "circlecartesian.h"
+#include "circledda.h"
+#include "circlepolar.h"
 
 MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
@@ -103,5 +105,19 @@ void MainWindow::on_actionCartesian_2_triggered()
 {
     shape_controller->changeShape(new Circle());
     shape_controller->changeDrawAlgo(new CircleCartesian());
+    update();
+}
+
+void MainWindow::on_actionInteger_DDA_2_triggered()
+{
+    shape_controller->changeShape(new Circle());
+    shape_controller->changeDrawAlgo(new CircleDDA());
+    update();
+}
+
+void MainWindow::on_actionPolar_triggered()
+{
+    shape_controller->changeShape(new Circle());
+    shape_controller->changeDrawAlgo(new CirclePolar());
     update();
 }

@@ -45,11 +45,13 @@
    </widget>
    <widget class="QMenu" name="menuCicle">
     <property name="title">
-     <string>cicle</string>
+     <string>circle</string>
     </property>
     <addaction name="separator"/>
     <addaction name="separator"/>
     <addaction name="actionCartesian_2"/>
+    <addaction name="actionInteger_DDA_2"/>
+    <addaction name="actionPolar"/>
    </widget>
    <addaction name="menuFile"/>
    <addaction name="menuLine"/>
@@ -91,6 +93,16 @@
   <action name="actionCartesian_2">
    <property name="text">
     <string>cartesian</string>
+   </property>
+  </action>
+  <action name="actionInteger_DDA_2">
+   <property name="text">
+    <string>Integer DDA</string>
+   </property>
+  </action>
+  <action name="actionPolar">
+   <property name="text">
+    <string>Polar</string>
    </property>
   </action>
  </widget>

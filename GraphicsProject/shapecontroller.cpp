@@ -4,6 +4,8 @@
 #include "circle.h"
 #include "linecartesian.h"
 #include "circlecartesian.h"
+#include "circledda.h"
+#include "circlepolar.h"
 #include "linedda.h"
 #include "lineparametric.h"
 #include "drawalgo.h"

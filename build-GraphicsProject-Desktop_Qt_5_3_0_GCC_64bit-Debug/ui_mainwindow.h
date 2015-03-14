@@ -31,6 +31,8 @@ public:
     QAction *actionSave;
     QAction *actionLoad;
     QAction *actionCartesian_2;
+    QAction *actionInteger_DDA_2;
+    QAction *actionPolar;
     QWidget *centralWidget;
     QMenuBar *menuBar;
     QMenu *menuLine;
@@ -56,6 +58,10 @@ public:
         actionLoad->setObjectName(QStringLiteral("actionLoad"));
         actionCartesian_2 = new QAction(MainWindow);
         actionCartesian_2->setObjectName(QStringLiteral("actionCartesian_2"));
+        actionInteger_DDA_2 = new QAction(MainWindow);
+        actionInteger_DDA_2->setObjectName(QStringLiteral("actionInteger_DDA_2"));
+        actionPolar = new QAction(MainWindow);
+        actionPolar->setObjectName(QStringLiteral("actionPolar"));
         centralWidget = new QWidget(MainWindow);
         centralWidget->setObjectName(QStringLiteral("centralWidget"));
         MainWindow->setCentralWidget(centralWidget);
@@ -86,6 +92,8 @@ public:
         menuCicle->addSeparator();
         menuCicle->addSeparator();
         menuCicle->addAction(actionCartesian_2);
+        menuCicle->addAction(actionInteger_DDA_2);
+        menuCicle->addAction(actionPolar);
 
         retranslateUi(MainWindow);
 
@@ -101,9 +109,11 @@ public:
         actionSave->setText(QApplication::translate("MainWindow", "Save", 0));
         actionLoad->setText(QApplication::translate("MainWindow", "Load", 0));
         actionCartesian_2->setText(QApplication::translate("MainWindow", "cartesian", 0));
+        actionInteger_DDA_2->setText(QApplication::translate("MainWindow", "Integer DDA", 0));
+        actionPolar->setText(QApplication::translate("MainWindow", "Polar", 0));
         menuLine->setTitle(QApplication::translate("MainWindow", "Line", 0));
         menuFile->setTitle(QApplication::translate("MainWindow", "File", 0));
-        menuCicle->setTitle(QApplication::translate("MainWindow", "cicle", 0));
+        menuCicle->setTitle(QApplication::translate("MainWindow", "circle", 0));
     } // retranslateUi
 
 };

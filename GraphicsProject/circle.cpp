@@ -25,8 +25,9 @@ Circle::~Circle()
 void Circle::draw(QPainter& p){
     if(Helper::is_set(pOne) && Helper::is_set(pTwo)){
         std::map<std::string,QPoint> m;
+        //int r = std::sqrt(std::pow(pOne.x()-pTwo.x(),2)+pow(pOne.y()-pTwo.y(),2));
         m["begin"] = pOne;
-        m["end"] = pTwo;
+        m["end"] = pTwo;   
         drawAlgo->draw(p,m);
     }
 }
