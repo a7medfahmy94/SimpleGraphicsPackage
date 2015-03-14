@@ -33,6 +33,8 @@ private slots:
 
     void on_saveButton_clicked();
 
+    void on_actionCartesian_2_triggered();
+
 private:
     Ui::MainWindow *ui;
 

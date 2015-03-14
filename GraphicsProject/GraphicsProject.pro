@@ -21,7 +21,10 @@ SOURCES += main.cpp\
     linecartesian.cpp \
     lineparametric.cpp \
     linedda.cpp \
-    shapecontroller.cpp
+    shapecontroller.cpp \
+    circle.cpp \
+    circlecartesian.cpp \
+    drawalgo.cpp
 
 HEADERS  += mainwindow.h \
     line.h \
@@ -32,6 +35,8 @@ HEADERS  += mainwindow.h \
     linecartesian.h \
     lineparametric.h \
     linedda.h \
-    shapecontroller.h
+    shapecontroller.h \
+    circlecartesian.h \
+    circle.h
 
 FORMS    += mainwindow.ui

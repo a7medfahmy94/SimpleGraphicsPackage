@@ -9,6 +9,8 @@
 #include "linecartesian.h"
 #include "linedda.h"
 #include "lineparametric.h"
+#include "circle.h"
+#include "circlecartesian.h"
 
 MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
@@ -95,4 +97,11 @@ void MainWindow::on_loadButton_clicked()
 void MainWindow::on_saveButton_clicked()
 {
     shape_controller->save();
+}
+
+void MainWindow::on_actionCartesian_2_triggered()
+{
+    shape_controller->changeShape(new Circle());
+    shape_controller->changeDrawAlgo(new CircleCartesian());
+    update();
 }
