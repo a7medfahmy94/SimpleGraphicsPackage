@@ -19,7 +19,7 @@ MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
     ui(new Ui::MainWindow)
 {
-    WIDTH = 400 , HEIGHT = 300;
+    WIDTH = 400 , HEIGHT = 700;
     shape_controller = new ShapeController(WIDTH, HEIGHT);
     ui->setupUi(this);
     shape_controller->setClear();
@@ -31,30 +31,6 @@ MainWindow::~MainWindow()
 {
     delete ui;
 }
-
-
-
-void MainWindow::on_actionCartesian_triggered()
-{
-    shape_controller->changeShape(new Line());
-    shape_controller->changeDrawAlgo(new LineCartesian());
-    update();
-}
-
-void MainWindow::on_actionParametric_triggered()
-{
-    shape_controller->changeShape(new Line());
-    shape_controller->changeDrawAlgo(new LineParametric());
-    update();
-}
-
-void MainWindow::on_actionInteger_DDA_triggered()
-{
-    shape_controller->changeShape(new Line());
-    shape_controller->changeDrawAlgo(new LineDDA());
-    update();
-}
-
 
 
 void MainWindow::mousePressEvent(QMouseEvent *f) {
@@ -76,56 +52,53 @@ void MainWindow::paintEvent(QPaintEvent *e) {
     shape_controller->draw(painter);
 }
 
-void MainWindow::redraw(QPainter& painter){
-    for(int i = 0 ; i < WIDTH ; ++i){
-        for(int j = 0 ; j < HEIGHT; ++j){
-//            if(file.get(i,j) != -1){
-//                painter.drawPoint(QPoint(i,j));
-//            }
-        }
-    }
-
-}
 
 
-
-void MainWindow::on_loadButton_clicked()
-{
-//    file.load();
-//    load = true;
-    update();
-
-}
-
-void MainWindow::on_saveButton_clicked()
-{
-    shape_controller->save();
-}
-
-void MainWindow::on_actionCartesian_2_triggered()
+void MainWindow::on_circleCartesian_triggered()
 {
     shape_controller->changeShape(new Circle());
     shape_controller->changeDrawAlgo(new CircleCartesian());
     update();
 }
 
-void MainWindow::on_actionInteger_DDA_2_triggered()
+void MainWindow::on_circleDDA_triggered()
 {
     shape_controller->changeShape(new Circle());
     shape_controller->changeDrawAlgo(new CircleDDA());
     update();
 }
 
-void MainWindow::on_actionPolar_triggered()
+void MainWindow::on_circlePolar_triggered()
 {
     shape_controller->changeShape(new Circle());
     shape_controller->changeDrawAlgo(new CirclePolar());
     update();
 }
 
-void MainWindow::on_actionMidPoint_triggered()
+void MainWindow::on_circleMidPoint_triggered()
 {
     shape_controller->changeShape(new Circle());
     shape_controller->changeDrawAlgo(new CircleMidPoint());
+    update();
+}
+
+void MainWindow::on_lineCartesian_triggered()
+{
+    shape_controller->changeShape(new Line());
+    shape_controller->changeDrawAlgo(new LineCartesian());
+    update();
+}
+
+void MainWindow::on_lineParametric_triggered()
+{
+    shape_controller->changeShape(new Line());
+    shape_controller->changeDrawAlgo(new LineParametric());
+    update();
+}
+
+void MainWindow::on_lineInteger_DDA_triggered()
+{
+    shape_controller->changeShape(new Line());
+    shape_controller->changeDrawAlgo(new LineDDA());
     update();
 }

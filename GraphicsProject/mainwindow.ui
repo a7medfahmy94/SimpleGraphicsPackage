@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>295</width>
-    <height>304</height>
+    <width>568</width>
+    <height>400</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -22,7 +22,7 @@
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>295</width>
+     <width>568</width>
      <height>25</height>
     </rect>
    </property>
@@ -30,18 +30,18 @@
     <property name="title">
      <string>Line</string>
     </property>
-    <addaction name="actionCartesian"/>
+    <addaction name="lineCartesian"/>
     <addaction name="separator"/>
-    <addaction name="actionParametric"/>
+    <addaction name="lineParametric"/>
     <addaction name="separator"/>
-    <addaction name="actionInteger_DDA"/>
+    <addaction name="lineInteger_DDA"/>
    </widget>
    <widget class="QMenu" name="menuFile">
     <property name="title">
      <string>File</string>
     </property>
-    <addaction name="actionSave"/>
-    <addaction name="actionLoad"/>
+    <addaction name="save"/>
+    <addaction name="load"/>
    </widget>
    <widget class="QMenu" name="menuCicle">
     <property name="title">
@@ -49,10 +49,10 @@
     </property>
     <addaction name="separator"/>
     <addaction name="separator"/>
-    <addaction name="actionCartesian_2"/>
-    <addaction name="actionInteger_DDA_2"/>
-    <addaction name="actionPolar"/>
-    <addaction name="actionMidPoint"/>
+    <addaction name="circleCartesian"/>
+    <addaction name="circleDDA"/>
+    <addaction name="circlePolar"/>
+    <addaction name="circleMidPoint"/>
    </widget>
    <addaction name="menuFile"/>
    <addaction name="menuLine"/>
@@ -66,47 +66,47 @@
     <bool>false</bool>
    </attribute>
   </widget>
-  <action name="actionCartesian">
+  <action name="lineCartesian">
    <property name="text">
     <string>Cartesian</string>
    </property>
   </action>
-  <action name="actionParametric">
+  <action name="lineParametric">
    <property name="text">
     <string>Parametric</string>
    </property>
   </action>
-  <action name="actionInteger_DDA">
+  <action name="lineInteger_DDA">
    <property name="text">
     <string>Integer DDA</string>
    </property>
   </action>
-  <action name="actionSave">
+  <action name="save">
    <property name="text">
     <string>Save</string>
    </property>
   </action>
-  <action name="actionLoad">
+  <action name="load">
    <property name="text">
     <string>Load</string>
    </property>
   </action>
-  <action name="actionCartesian_2">
+  <action name="circleCartesian">
    <property name="text">
     <string>cartesian</string>
    </property>
   </action>
-  <action name="actionInteger_DDA_2">
+  <action name="circleDDA">
    <property name="text">
     <string>Integer DDA</string>
    </property>
   </action>
-  <action name="actionPolar">
+  <action name="circlePolar">
    <property name="text">
     <string>Polar</string>
    </property>
   </action>
-  <action name="actionMidPoint">
+  <action name="circleMidPoint">
    <property name="text">
     <string>MidPoint</string>
    </property>

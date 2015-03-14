@@ -22,7 +22,6 @@ void LineParametric::draw(QPainter& p,std::map<std::string,QPoint> ma){
 
     double inc = 1.0/std::max(abs(xb-xe),abs(yb-ye));
     double q = 0;
-    std::cout << inc << std::endl;
     while(q <= 1){
         int x = xb + q*(xe-xb);
         int y = yb + q*(ye-yb);
