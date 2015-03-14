@@ -39,6 +39,8 @@ private slots:
 
     void on_actionPolar_triggered();
 
+    void on_actionMidPoint_triggered();
+
 private:
     Ui::MainWindow *ui;
 

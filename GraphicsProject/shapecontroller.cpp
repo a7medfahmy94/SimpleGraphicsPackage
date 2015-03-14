@@ -6,6 +6,7 @@
 #include "circlecartesian.h"
 #include "circledda.h"
 #include "circlepolar.h"
+#include "circlemidpoint.h"
 #include "linedda.h"
 #include "lineparametric.h"
 #include "drawalgo.h"

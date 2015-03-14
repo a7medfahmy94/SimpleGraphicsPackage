@@ -13,6 +13,7 @@
 #include "circlecartesian.h"
 #include "circledda.h"
 #include "circlepolar.h"
+#include "circlemidpoint.h"
 
 MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
@@ -119,5 +120,12 @@ void MainWindow::on_actionPolar_triggered()
 {
     shape_controller->changeShape(new Circle());
     shape_controller->changeDrawAlgo(new CirclePolar());
+    update();
+}
+
+void MainWindow::on_actionMidPoint_triggered()
+{
+    shape_controller->changeShape(new Circle());
+    shape_controller->changeDrawAlgo(new CircleMidPoint());
     update();
 }

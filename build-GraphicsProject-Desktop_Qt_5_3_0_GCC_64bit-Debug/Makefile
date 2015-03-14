@@ -59,7 +59,8 @@ SOURCES       = ../GraphicsProject/main.cpp \
 		../GraphicsProject/circlecartesian.cpp \
 		../GraphicsProject/drawalgo.cpp \
 		../GraphicsProject/circledda.cpp \
-		../GraphicsProject/circlepolar.cpp moc_mainwindow.cpp
+		../GraphicsProject/circlepolar.cpp \
+		../GraphicsProject/circlemidpoint.cpp moc_mainwindow.cpp
 OBJECTS       = main.o \
 		mainwindow.o \
 		line.o \
@@ -75,6 +76,7 @@ OBJECTS       = main.o \
 		drawalgo.o \
 		circledda.o \
 		circlepolar.o \
+		circlemidpoint.o \
 		moc_mainwindow.o
 DIST          = ../../Qt5.3.0/5.3/gcc_64/mkspecs/features/spec_pre.prf \
 		../../Qt5.3.0/5.3/gcc_64/mkspecs/common/shell-unix.conf \
@@ -197,7 +199,8 @@ DIST          = ../../Qt5.3.0/5.3/gcc_64/mkspecs/features/spec_pre.prf \
 		../GraphicsProject/circlecartesian.cpp \
 		../GraphicsProject/drawalgo.cpp \
 		../GraphicsProject/circledda.cpp \
-		../GraphicsProject/circlepolar.cpp
+		../GraphicsProject/circlepolar.cpp \
+		../GraphicsProject/circlemidpoint.cpp
 QMAKE_TARGET  = GraphicsProject
 DESTDIR       = #avoid trailing-slash linebreak
 TARGET        = GraphicsProject
@@ -460,7 +463,7 @@ qmake_all: FORCE
 
 dist: 
 	@test -d .tmp/GraphicsProject1.0.0 || mkdir -p .tmp/GraphicsProject1.0.0
-	$(COPY_FILE) --parents $(DIST) .tmp/GraphicsProject1.0.0/ && $(COPY_FILE) --parents ../GraphicsProject/mainwindow.h ../GraphicsProject/line.h ../GraphicsProject/file.h ../GraphicsProject/shape.h ../GraphicsProject/helper.h ../GraphicsProject/drawalgo.h ../GraphicsProject/linecartesian.h ../GraphicsProject/lineparametric.h ../GraphicsProject/linedda.h ../GraphicsProject/shapecontroller.h ../GraphicsProject/circlecartesian.h ../GraphicsProject/circle.h ../GraphicsProject/circledda.h ../GraphicsProject/circlepolar.h .tmp/GraphicsProject1.0.0/ && $(COPY_FILE) --parents ../GraphicsProject/main.cpp ../GraphicsProject/mainwindow.cpp ../GraphicsProject/line.cpp ../GraphicsProject/file.cpp ../GraphicsProject/shape.cpp ../GraphicsProject/helper.cpp ../GraphicsProject/linecartesian.cpp ../GraphicsProject/lineparametric.cpp ../GraphicsProject/linedda.cpp ../GraphicsProject/shapecontroller.cpp ../GraphicsProject/circle.cpp ../GraphicsProject/circlecartesian.cpp ../GraphicsProject/drawalgo.cpp ../GraphicsProject/circledda.cpp ../GraphicsProject/circlepolar.cpp .tmp/GraphicsProject1.0.0/ && $(COPY_FILE) --parents ../GraphicsProject/mainwindow.ui .tmp/GraphicsProject1.0.0/ && (cd `dirname .tmp/GraphicsProject1.0.0` && $(TAR) GraphicsProject1.0.0.tar GraphicsProject1.0.0 && $(COMPRESS) GraphicsProject1.0.0.tar) && $(MOVE) `dirname .tmp/GraphicsProject1.0.0`/GraphicsProject1.0.0.tar.gz . && $(DEL_FILE) -r .tmp/GraphicsProject1.0.0
+	$(COPY_FILE) --parents $(DIST) .tmp/GraphicsProject1.0.0/ && $(COPY_FILE) --parents ../GraphicsProject/mainwindow.h ../GraphicsProject/line.h ../GraphicsProject/file.h ../GraphicsProject/shape.h ../GraphicsProject/helper.h ../GraphicsProject/drawalgo.h ../GraphicsProject/linecartesian.h ../GraphicsProject/lineparametric.h ../GraphicsProject/linedda.h ../GraphicsProject/shapecontroller.h ../GraphicsProject/circlecartesian.h ../GraphicsProject/circle.h ../GraphicsProject/circledda.h ../GraphicsProject/circlepolar.h ../GraphicsProject/circlemidpoint.h .tmp/GraphicsProject1.0.0/ && $(COPY_FILE) --parents ../GraphicsProject/main.cpp ../GraphicsProject/mainwindow.cpp ../GraphicsProject/line.cpp ../GraphicsProject/file.cpp ../GraphicsProject/shape.cpp ../GraphicsProject/helper.cpp ../GraphicsProject/linecartesian.cpp ../GraphicsProject/lineparametric.cpp ../GraphicsProject/linedda.cpp ../GraphicsProject/shapecontroller.cpp ../GraphicsProject/circle.cpp ../GraphicsProject/circlecartesian.cpp ../GraphicsProject/drawalgo.cpp ../GraphicsProject/circledda.cpp ../GraphicsProject/circlepolar.cpp ../GraphicsProject/circlemidpoint.cpp .tmp/GraphicsProject1.0.0/ && $(COPY_FILE) --parents ../GraphicsProject/mainwindow.ui .tmp/GraphicsProject1.0.0/ && (cd `dirname .tmp/GraphicsProject1.0.0` && $(TAR) GraphicsProject1.0.0.tar GraphicsProject1.0.0 && $(COMPRESS) GraphicsProject1.0.0.tar) && $(MOVE) `dirname .tmp/GraphicsProject1.0.0`/GraphicsProject1.0.0.tar.gz . && $(DEL_FILE) -r .tmp/GraphicsProject1.0.0
 
 
 clean:compiler_clean 
@@ -902,7 +905,8 @@ mainwindow.o: ../GraphicsProject/mainwindow.cpp ui_mainwindow.h \
 		../GraphicsProject/circle.h \
 		../GraphicsProject/circlecartesian.h \
 		../GraphicsProject/circledda.h \
-		../GraphicsProject/circlepolar.h
+		../GraphicsProject/circlepolar.h \
+		../GraphicsProject/circlemidpoint.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o mainwindow.o ../GraphicsProject/mainwindow.cpp
 
 line.o: ../GraphicsProject/line.cpp ../GraphicsProject/line.h \
@@ -1617,6 +1621,7 @@ shapecontroller.o: ../GraphicsProject/shapecontroller.cpp ../GraphicsProject/sha
 		../GraphicsProject/circlecartesian.h \
 		../GraphicsProject/circledda.h \
 		../GraphicsProject/circlepolar.h \
+		../GraphicsProject/circlemidpoint.h \
 		../GraphicsProject/linedda.h \
 		../GraphicsProject/lineparametric.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o shapecontroller.o ../GraphicsProject/shapecontroller.cpp
@@ -2136,6 +2141,96 @@ circlepolar.o: ../GraphicsProject/circlepolar.cpp ../GraphicsProject/circlepolar
 		../../Qt5.3.0/5.3/gcc_64/include/QtCore/QPoint \
 		../GraphicsProject/helper.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o circlepolar.o ../GraphicsProject/circlepolar.cpp
+
+circlemidpoint.o: ../GraphicsProject/circlemidpoint.cpp ../GraphicsProject/circlemidpoint.h \
+		../GraphicsProject/drawalgo.h \
+		../../Qt5.3.0/5.3/gcc_64/include/QtGui/QPainter \
+		../../Qt5.3.0/5.3/gcc_64/include/QtGui/qpainter.h \
+		../../Qt5.3.0/5.3/gcc_64/include/QtCore/qnamespace.h \
+		../../Qt5.3.0/5.3/gcc_64/include/QtCore/qglobal.h \
+		../../Qt5.3.0/5.3/gcc_64/include/QtCore/qconfig.h \
+		../../Qt5.3.0/5.3/gcc_64/include/QtCore/qfeatures.h \
+		../../Qt5.3.0/5.3/gcc_64/include/QtCore/qsystemdetection.h \
+		../../Qt5.3.0/5.3/gcc_64/include/QtCore/qprocessordetection.h \
+		../../Qt5.3.0/5.3/gcc_64/include/QtCore/qcompilerdetection.h \
+		../../Qt5.3.0/5.3/gcc_64/include/QtCore/qtypeinfo.h \
+		../../Qt5.3.0/5.3/gcc_64/include/QtCore/qtypetraits.h \
+		../../Qt5.3.0/5.3/gcc_64/include/QtCore/qsysinfo.h \
+		../../Qt5.3.0/5.3/gcc_64/include/QtCore/qlogging.h \
+		../../Qt5.3.0/5.3/gcc_64/include/QtCore/qflags.h \
+		../../Qt5.3.0/5.3/gcc_64/include/QtCore/qatomic.h \
+		../../Qt5.3.0/5.3/gcc_64/include/QtCore/qbasicatomic.h \
+		../../Qt5.3.0/5.3/gcc_64/include/QtCore/qatomic_bootstrap.h \
+		../../Qt5.3.0/5.3/gcc_64/include/QtCore/qgenericatomic.h \
+		../../Qt5.3.0/5.3/gcc_64/include/QtCore/qatomic_msvc.h \
+		../../Qt5.3.0/5.3/gcc_64/include/QtCore/qatomic_armv7.h \
+		../../Qt5.3.0/5.3/gcc_64/include/QtCore/qatomic_armv6.h \
+		../../Qt5.3.0/5.3/gcc_64/include/QtCore/qatomic_armv5.h \
+		../../Qt5.3.0/5.3/gcc_64/include/QtCore/qatomic_ia64.h \
+		../../Qt5.3.0/5.3/gcc_64/include/QtCore/qatomic_mips.h \
+		../../Qt5.3.0/5.3/gcc_64/include/QtCore/qatomic_x86.h \
+		../../Qt5.3.0/5.3/gcc_64/include/QtCore/qatomic_cxx11.h \
+		../../Qt5.3.0/5.3/gcc_64/include/QtCore/qatomic_gcc.h \
+		../../Qt5.3.0/5.3/gcc_64/include/QtCore/qatomic_unix.h \
+		../../Qt5.3.0/5.3/gcc_64/include/QtCore/qglobalstatic.h \
+		../../Qt5.3.0/5.3/gcc_64/include/QtCore/qmutex.h \
+		../../Qt5.3.0/5.3/gcc_64/include/QtCore/qnumeric.h \
+		../../Qt5.3.0/5.3/gcc_64/include/QtCore/qrect.h \
+		../../Qt5.3.0/5.3/gcc_64/include/QtCore/qmargins.h \
+		../../Qt5.3.0/5.3/gcc_64/include/QtCore/qsize.h \
+		../../Qt5.3.0/5.3/gcc_64/include/QtCore/qpoint.h \
+		../../Qt5.3.0/5.3/gcc_64/include/QtCore/qscopedpointer.h \
+		../../Qt5.3.0/5.3/gcc_64/include/QtGui/qpixmap.h \
+		../../Qt5.3.0/5.3/gcc_64/include/QtGui/qpaintdevice.h \
+		../../Qt5.3.0/5.3/gcc_64/include/QtGui/qwindowdefs.h \
+		../../Qt5.3.0/5.3/gcc_64/include/QtCore/qobjectdefs.h \
+		../../Qt5.3.0/5.3/gcc_64/include/QtCore/qobjectdefs_impl.h \
+		../../Qt5.3.0/5.3/gcc_64/include/QtGui/qwindowdefs_win.h \
+		../../Qt5.3.0/5.3/gcc_64/include/QtGui/qcolor.h \
+		../../Qt5.3.0/5.3/gcc_64/include/QtGui/qrgb.h \
+		../../Qt5.3.0/5.3/gcc_64/include/QtCore/qstringlist.h \
+		../../Qt5.3.0/5.3/gcc_64/include/QtCore/qalgorithms.h \
+		../../Qt5.3.0/5.3/gcc_64/include/QtCore/qdatastream.h \
+		../../Qt5.3.0/5.3/gcc_64/include/QtCore/qiodevice.h \
+		../../Qt5.3.0/5.3/gcc_64/include/QtCore/qobject.h \
+		../../Qt5.3.0/5.3/gcc_64/include/QtCore/qstring.h \
+		../../Qt5.3.0/5.3/gcc_64/include/QtCore/qchar.h \
+		../../Qt5.3.0/5.3/gcc_64/include/QtCore/qbytearray.h \
+		../../Qt5.3.0/5.3/gcc_64/include/QtCore/qrefcount.h \
+		../../Qt5.3.0/5.3/gcc_64/include/QtCore/qarraydata.h \
+		../../Qt5.3.0/5.3/gcc_64/include/QtCore/qstringbuilder.h \
+		../../Qt5.3.0/5.3/gcc_64/include/QtCore/qlist.h \
+		../../Qt5.3.0/5.3/gcc_64/include/QtCore/qiterator.h \
+		../../Qt5.3.0/5.3/gcc_64/include/QtCore/qcoreevent.h \
+		../../Qt5.3.0/5.3/gcc_64/include/QtCore/qmetatype.h \
+		../../Qt5.3.0/5.3/gcc_64/include/QtCore/qvarlengtharray.h \
+		../../Qt5.3.0/5.3/gcc_64/include/QtCore/qcontainerfwd.h \
+		../../Qt5.3.0/5.3/gcc_64/include/QtCore/qisenum.h \
+		../../Qt5.3.0/5.3/gcc_64/include/QtCore/qobject_impl.h \
+		../../Qt5.3.0/5.3/gcc_64/include/QtCore/qpair.h \
+		../../Qt5.3.0/5.3/gcc_64/include/QtCore/qregexp.h \
+		../../Qt5.3.0/5.3/gcc_64/include/QtCore/qstringmatcher.h \
+		../../Qt5.3.0/5.3/gcc_64/include/QtCore/qsharedpointer.h \
+		../../Qt5.3.0/5.3/gcc_64/include/QtCore/qshareddata.h \
+		../../Qt5.3.0/5.3/gcc_64/include/QtCore/qsharedpointer_impl.h \
+		../../Qt5.3.0/5.3/gcc_64/include/QtCore/qhash.h \
+		../../Qt5.3.0/5.3/gcc_64/include/QtGui/qimage.h \
+		../../Qt5.3.0/5.3/gcc_64/include/QtGui/qtransform.h \
+		../../Qt5.3.0/5.3/gcc_64/include/QtGui/qmatrix.h \
+		../../Qt5.3.0/5.3/gcc_64/include/QtGui/qpolygon.h \
+		../../Qt5.3.0/5.3/gcc_64/include/QtCore/qvector.h \
+		../../Qt5.3.0/5.3/gcc_64/include/QtGui/qregion.h \
+		../../Qt5.3.0/5.3/gcc_64/include/QtCore/qline.h \
+		../../Qt5.3.0/5.3/gcc_64/include/QtGui/qpainterpath.h \
+		../../Qt5.3.0/5.3/gcc_64/include/QtGui/qtextoption.h \
+		../../Qt5.3.0/5.3/gcc_64/include/QtGui/qpen.h \
+		../../Qt5.3.0/5.3/gcc_64/include/QtGui/qbrush.h \
+		../../Qt5.3.0/5.3/gcc_64/include/QtGui/qfontinfo.h \
+		../../Qt5.3.0/5.3/gcc_64/include/QtGui/qfont.h \
+		../../Qt5.3.0/5.3/gcc_64/include/QtGui/qfontmetrics.h \
+		../../Qt5.3.0/5.3/gcc_64/include/QtCore/QPoint \
+		../GraphicsProject/helper.h
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o circlemidpoint.o ../GraphicsProject/circlemidpoint.cpp
 
 moc_mainwindow.o: moc_mainwindow.cpp 
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o moc_mainwindow.o moc_mainwindow.cpp

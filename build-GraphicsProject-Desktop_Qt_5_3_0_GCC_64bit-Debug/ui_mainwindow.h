@@ -33,6 +33,7 @@ public:
     QAction *actionCartesian_2;
     QAction *actionInteger_DDA_2;
     QAction *actionPolar;
+    QAction *actionMidPoint;
     QWidget *centralWidget;
     QMenuBar *menuBar;
     QMenu *menuLine;
@@ -62,6 +63,8 @@ public:
         actionInteger_DDA_2->setObjectName(QStringLiteral("actionInteger_DDA_2"));
         actionPolar = new QAction(MainWindow);
         actionPolar->setObjectName(QStringLiteral("actionPolar"));
+        actionMidPoint = new QAction(MainWindow);
+        actionMidPoint->setObjectName(QStringLiteral("actionMidPoint"));
         centralWidget = new QWidget(MainWindow);
         centralWidget->setObjectName(QStringLiteral("centralWidget"));
         MainWindow->setCentralWidget(centralWidget);
@@ -94,6 +97,7 @@ public:
         menuCicle->addAction(actionCartesian_2);
         menuCicle->addAction(actionInteger_DDA_2);
         menuCicle->addAction(actionPolar);
+        menuCicle->addAction(actionMidPoint);
 
         retranslateUi(MainWindow);
 
@@ -111,6 +115,7 @@ public:
         actionCartesian_2->setText(QApplication::translate("MainWindow", "cartesian", 0));
         actionInteger_DDA_2->setText(QApplication::translate("MainWindow", "Integer DDA", 0));
         actionPolar->setText(QApplication::translate("MainWindow", "Polar", 0));
+        actionMidPoint->setText(QApplication::translate("MainWindow", "MidPoint", 0));
         menuLine->setTitle(QApplication::translate("MainWindow", "Line", 0));
         menuFile->setTitle(QApplication::translate("MainWindow", "File", 0));
         menuCicle->setTitle(QApplication::translate("MainWindow", "circle", 0));

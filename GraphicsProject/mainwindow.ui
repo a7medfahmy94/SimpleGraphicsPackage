@@ -52,6 +52,7 @@
     <addaction name="actionCartesian_2"/>
     <addaction name="actionInteger_DDA_2"/>
     <addaction name="actionPolar"/>
+    <addaction name="actionMidPoint"/>
    </widget>
    <addaction name="menuFile"/>
    <addaction name="menuLine"/>
@@ -103,6 +104,11 @@
   <action name="actionPolar">
    <property name="text">
     <string>Polar</string>
+   </property>
+  </action>
+  <action name="actionMidPoint">
+   <property name="text">
+    <string>MidPoint</string>
    </property>
   </action>
  </widget>
