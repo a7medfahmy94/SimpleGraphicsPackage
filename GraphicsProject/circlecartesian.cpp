@@ -2,7 +2,7 @@
 #include <bits/stdc++.h>
 #include "helper.h"
 #include "drawalgo.h"
-#include "QPainter"
+#include <QPainter>
 #include <QPoint>
 
 CircleCartesian::CircleCartesian()
@@ -26,7 +26,7 @@ void CircleCartesian::draw(QPainter& p,std::map<std::string,QPoint> ma){
             X++;
            // std::cout << X << " " << Y << std::endl;
             Y = sqrt(r*r - X*X);
-            DrawAlgo->draw8Points(p,center.x(),center.y(),X,Y);
+            DrawAlgo::draw8Points(p,center.x(),center.y(),X,Y);
         }
 
     }

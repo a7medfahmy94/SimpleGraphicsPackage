@@ -2,15 +2,15 @@
 #include <QPoint>
 #include <QPainter>
 
-DrawAlgo::DrawAlgo(QPainter& painter,int xc,int yc,int X,int Y)
+void DrawAlgo::draw8Points(QPainter& painter,int xc,int yc,int X,int Y)
 {
-    painter.draw8Point(X+xc,Y+yc);
-    painter.draw8Point(-X+xc,Y+yc);
-    painter.draw8Point(-X+xc,-Y+yc);
-    painter.draw8Point(X+xc,-Y+yc);
-    painter.draw8Point(Y+xc,X+yc);
-    painter.draw8Point(-Y+xc,X+yc);
-    painter.draw8Point(-Y+xc,-X+yc);
-    painter.draw8Point(Y+xc,-X+yc);
+    painter.drawPoint(X+xc,Y+yc);
+    painter.drawPoint(-X+xc,Y+yc);
+    painter.drawPoint(-X+xc,-Y+yc);
+    painter.drawPoint(X+xc,-Y+yc);
+    painter.drawPoint(Y+xc,X+yc);
+    painter.drawPoint(-Y+xc,X+yc);
+    painter.drawPoint(-Y+xc,-X+yc);
+    painter.drawPoint(Y+xc,-X+yc);
 
 }
