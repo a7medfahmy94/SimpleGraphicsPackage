@@ -34,7 +34,7 @@ void File::draw(int x,int y){
 }
 
 void File::save(){
-    std::ofstream file(fileName.c_str(),std::ios::binary);
+    std::ofstream file(fileName.c_str(),std::ios::binary|std::ios::trunc);
     for(int i = 0 ; i < HEIGHT; i++){
         file.write((char*)grid[i],WIDTH*4);
     }
@@ -45,6 +45,14 @@ void File::load(){
     std::ifstream in(fileName.c_str(),std::ios::binary);
     for(int i = 0 ; i < HEIGHT; i++){
         in.read((char*)grid[i],WIDTH*4);
+    }
+}
+
+void File::clear(){
+    for(int i = 0 ; i < HEIGHT; i++){
+        for(int j = 0 ; j < WIDTH; j++){
+            grid[i][j] = 0;
+        }
     }
 }
 

@@ -27,7 +27,11 @@ SOURCES += main.cpp\
     drawalgo.cpp \
     circledda.cpp \
     circlepolar.cpp \
-    circlemidpoint.cpp
+    circlemidpoint.cpp \
+    circlefilled.cpp \
+    ellipse.cpp \
+    ellipsecartesian.cpp \
+    ellipsepolar.cpp
 
 HEADERS  += mainwindow.h \
     line.h \
@@ -43,6 +47,10 @@ HEADERS  += mainwindow.h \
     circle.h \
     circledda.h \
     circlepolar.h \
-    circlemidpoint.h
+    circlemidpoint.h \
+    circlefilled.h \
+    ellipse.h \
+    ellipsecartesian.h \
+    ellipsepolar.h
 
 FORMS    += mainwindow.ui

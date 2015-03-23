@@ -14,6 +14,10 @@
 #include "circledda.h"
 #include "circlepolar.h"
 #include "circlemidpoint.h"
+#include "circlefilled.h"
+#include "ellipse.h"
+#include "ellipsecartesian.h"
+#include "ellipsepolar.h"
 
 MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
@@ -98,6 +102,12 @@ void MainWindow::on_circleMidPoint_triggered()
     shape_controller->changeDrawAlgo(new CircleMidPoint());
     update();
 }
+void MainWindow::on_circleFilled_triggered()
+{
+    shape_controller->changeShape(new Circle());
+    shape_controller->changeDrawAlgo(new CircleFilled());
+    update();
+}
 
 void MainWindow::on_lineCartesian_triggered()
 {
@@ -129,4 +139,18 @@ void MainWindow::on_load_triggered()
 {
     shape_controller->load();
     update();
+}
+
+
+void MainWindow::on_ellipseCartesian_triggered()
+{
+    shape_controller->changeShape(new Ellipse());
+    shape_controller->changeDrawAlgo(new EllipseCartesian());
+}
+
+void MainWindow::on_ellipsePolar_triggered()
+{
+    shape_controller->changeShape(new Ellipse());
+    shape_controller->changeDrawAlgo(new EllipsePolar());
+
 }

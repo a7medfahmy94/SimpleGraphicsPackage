@@ -14,3 +14,10 @@ void DrawAlgo::draw8Points(QPainter& painter,int xc,int yc,int X,int Y)
     painter.drawPoint(Y+xc,-X+yc);
 
 }
+
+void DrawAlgo::draw4Points(QPainter& painter,int xc,int yc,int x,int y){
+    painter.drawPoint(xc+x , yc+y);
+    painter.drawPoint(xc-x , yc+y);
+    painter.drawPoint(xc+x , yc-y);
+    painter.drawPoint(xc-x , yc-y);
+}

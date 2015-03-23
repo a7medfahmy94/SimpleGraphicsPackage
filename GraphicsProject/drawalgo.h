@@ -13,6 +13,7 @@ public:
     virtual void draw(QPainter&,std::map<std::string,QPoint>) = 0;
 
     static void draw8Points(QPainter&,int ,int ,int ,int );
+    static void draw4Points(QPainter&,int ,int ,int ,int );
 };
 
 #endif // DRAWALGO_H

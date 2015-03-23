@@ -37,21 +37,14 @@ void ShapeController::changeDrawAlgo(DrawAlgo* d){
 }
 
 void ShapeController::changeShape(Shape * p){
+    setClear();
     shape = p;
 }
 
 void ShapeController::draw(QPainter & p){
     if(clear){
-//        QPen linepen(Qt::white);
-//        linepen.setCapStyle(Qt::RoundCap);
-//        linepen.setWidth(4);
-//        p.setPen(linepen);
-//        for(int i = 0 ; i < file.getH(); i++){
-//            for(int j = 0 ; j < file.getW(); j++){
-//                p.drawPoint(QPoint(i,j));
-//            }
-//        }
         img->fill(Qt::white);
+        file->clear();
         clear = false;
     }else if(file_load){
         for(int i = 0 ; i < file->getH(); i++){

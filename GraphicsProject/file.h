@@ -17,6 +17,7 @@ public:
     void set(int,int);
     int getH();
     int getW();
+    void clear();
 private:
     int ** grid;
     int WIDTH , HEIGHT;

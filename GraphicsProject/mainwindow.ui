@@ -53,10 +53,19 @@
     <addaction name="circleDDA"/>
     <addaction name="circlePolar"/>
     <addaction name="circleMidPoint"/>
+    <addaction name="circleFilled"/>
+   </widget>
+   <widget class="QMenu" name="menuEllipse">
+    <property name="title">
+     <string>Ellipse</string>
+    </property>
+    <addaction name="ellipseCartesian"/>
+    <addaction name="ellipsePolar"/>
    </widget>
    <addaction name="menuFile"/>
    <addaction name="menuLine"/>
    <addaction name="menuCicle"/>
+   <addaction name="menuEllipse"/>
   </widget>
   <widget class="QToolBar" name="mainToolBar">
    <attribute name="toolBarArea">
@@ -109,6 +118,21 @@
   <action name="circleMidPoint">
    <property name="text">
     <string>MidPoint</string>
+   </property>
+  </action>
+  <action name="circleFilled">
+   <property name="text">
+    <string>Circle Filled</string>
+   </property>
+  </action>
+  <action name="ellipseCartesian">
+   <property name="text">
+    <string>Cartesian</string>
+   </property>
+  </action>
+  <action name="ellipsePolar">
+   <property name="text">
+    <string>Polar</string>
    </property>
   </action>
  </widget>

@@ -44,6 +44,12 @@ private slots:
 
     void on_load_triggered();
 
+    void on_circleFilled_triggered();
+
+    void on_ellipseCartesian_triggered();
+
+    void on_ellipsePolar_triggered();
+
 private:
     Ui::MainWindow *ui;
 
