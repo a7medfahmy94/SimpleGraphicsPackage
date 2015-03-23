@@ -154,3 +154,8 @@ void MainWindow::on_ellipsePolar_triggered()
     shape_controller->changeDrawAlgo(new EllipsePolar());
 
 }
+
+void MainWindow::on_ClearButton_clicked()
+{
+    shape_controller->setClear();
+}

@@ -32,12 +32,10 @@ void ShapeController::setClear(){
 }
 
 void ShapeController::changeDrawAlgo(DrawAlgo* d){
-    setClear();
     shape->setDrawAlgo(d);
 }
 
 void ShapeController::changeShape(Shape * p){
-    setClear();
     shape = p;
 }
 

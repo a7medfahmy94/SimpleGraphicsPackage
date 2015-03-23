@@ -50,6 +50,8 @@ private slots:
 
     void on_ellipsePolar_triggered();
 
+    void on_ClearButton_clicked();
+
 private:
     Ui::MainWindow *ui;
 
