@@ -31,7 +31,8 @@ SOURCES += main.cpp\
     circlefilled.cpp \
     ellipse.cpp \
     ellipsecartesian.cpp \
-    ellipsepolar.cpp
+    ellipsepolar.cpp \
+    ellipsemidpoint.cpp
 
 HEADERS  += mainwindow.h \
     line.h \
@@ -51,6 +52,7 @@ HEADERS  += mainwindow.h \
     circlefilled.h \
     ellipse.h \
     ellipsecartesian.h \
-    ellipsepolar.h
+    ellipsepolar.h \
+    ellipsemidpoint.h
 
 FORMS    += mainwindow.ui

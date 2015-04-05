@@ -18,6 +18,7 @@
 #include "ellipse.h"
 #include "ellipsecartesian.h"
 #include "ellipsepolar.h"
+#include "ellipsemidpoint.h"
 
 MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
@@ -158,4 +159,10 @@ void MainWindow::on_ellipsePolar_triggered()
 void MainWindow::on_ClearButton_clicked()
 {
     shape_controller->setClear();
+}
+
+void MainWindow::on_ellipseMidPoint_triggered()
+{
+    shape_controller->changeShape(new Ellipse());
+    shape_controller->changeDrawAlgo(new EllipseMidpoint());
 }

@@ -75,6 +75,7 @@
     </property>
     <addaction name="ellipseCartesian"/>
     <addaction name="ellipsePolar"/>
+    <addaction name="ellipseMidPoint"/>
    </widget>
    <addaction name="menuFile"/>
    <addaction name="menuLine"/>
@@ -147,6 +148,11 @@
   <action name="ellipsePolar">
    <property name="text">
     <string>Polar</string>
+   </property>
+  </action>
+  <action name="ellipseMidPoint">
+   <property name="text">
+    <string>MidPoint</string>
    </property>
   </action>
  </widget>

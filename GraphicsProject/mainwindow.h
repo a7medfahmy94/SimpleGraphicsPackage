@@ -52,6 +52,8 @@ private slots:
 
     void on_ClearButton_clicked();
 
+    void on_ellipseMidPoint_triggered();
+
 private:
     Ui::MainWindow *ui;
 
